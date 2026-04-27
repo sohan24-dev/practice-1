@@ -30,10 +30,13 @@ const LoginPage = () => {
     }
 
     const handleGoogle = async () => {
-        const data = await authClient.signIn.social({
+        const { data, error } = await authClient.signIn.social({
             provider: "google",
         });
 
+        if (error) {
+            alert(error.message)
+        }
     }
     const handlegithub = async () => {
         const data = await authClient.signIn.social({
